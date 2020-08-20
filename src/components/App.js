@@ -15,13 +15,27 @@ class App extends React.Component {
     }
   }
 
-  findAllPets = () => {
-    let url = '/api/pets'
-
-    if (this.state.filters.type !== 'all') {
-      url += '?type=${this.state.filter.type}'
-    }
-  }
+  handleChangeType = e => {
+     this.setState({filters: {...this.state.filters,
+       type: e }})
+   }
+ 
+   handleFindPet = () => {
+     let url = '/api/pets'
+ 
+     if (this.state.filters.type !== "all") {
+       url += `?type=${this.state.filters.type}`}
+ 
+     fetch(url)
+     .then(res => res.json())
+     .then(res => this.setState({pets: res}))
+   }
+ 
+   handleAdoption = e => {
+     this.setState({
+       adoptedPets: [...this.state.adoptedPets, e]
+     })
+   }
 
   render() {
     return (
