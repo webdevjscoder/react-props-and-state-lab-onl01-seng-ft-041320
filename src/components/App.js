@@ -17,6 +17,10 @@ class App extends React.Component {
 
   findAllPets = () => {
     let url = '/api/pets'
+
+    if (this.state.filters.type !== 'all') {
+      url += '?type=cat'
+    }
   }
 
   render() {
