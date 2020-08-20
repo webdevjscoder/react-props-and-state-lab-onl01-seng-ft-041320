@@ -15,6 +15,10 @@ class App extends React.Component {
     }
   }
 
+  findAllPets = () => {
+    let url = '/api/pets'
+  }
+
   render() {
     return (
       <div className="ui container">
